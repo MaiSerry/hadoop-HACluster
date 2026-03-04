@@ -21,12 +21,30 @@ RUN curl -O https://archive.apache.org/dist/hadoop/common/hadoop-3.3.6/hadoop-3.
     mv hadoop-3.3.6 /opt/hadoop && \
     rm hadoop-3.3.6.tar.gz
 
-RUN mkdir /var/run/sshd
-RUN echo 'root:root' | chpasswd
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
-EXPOSE 22
+# Download ZooKeeper
+RUN cd /opt && \
+    wget https://downloads.apache.org/zookeeper/zookeeper-3.9.4/apache-zookeeper-3.9.4-bin.tar.gz && \
+    tar -xzvf apache-zookeeper-3.9.4-bin.tar.gz && \
+    mv apache-zookeeper-3.9.4-bin /opt/zookeeper && \
+    rm apache-zookeeper-3.9.4-bin.tar.gz
 
-CMD ["/usr/sbin/sshd", "-D"]
+# Create data directory
+RUN mkdir -p /opt/data/zookeeper && \
+    chown -R root:root /opt/data/zookeeper && \
+    chmod -R 755 /opt/data/zookeeper
+
+
+# Create zoo.cfg automatically
+RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg && \
+    echo "tickTime=2000\n\
+dataDir=/opt/zookeeper/data\n\
+clientPort=2181\n\
+initLimit=5\n\
+syncLimit=2\n\
+server.1=mymaster01:2888:3888\n\
+server.2=mymaster02:2888:3888\n\
+server.3=myworker01:2888:3888" \
+> /opt/zookeeper/conf/zoo.cfg
+
 WORKDIR /root

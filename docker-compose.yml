@@ -1,7 +1,7 @@
-version: "3.9"
 
 services:
   mymaster01:
+    build: .
     image: hadoop-ha:1.0
     container_name: mymaster01
     hostname: mymaster01
@@ -12,10 +12,13 @@ services:
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
+      - ./name/nn1:/opt/hadoop/dfs/name
+     
     networks:
       - cluster-network
 
   mymaster02:
+    build: .
     image: hadoop-ha:1.0
     container_name: mymaster02
     hostname: mymaster02
@@ -26,10 +29,13 @@ services:
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
+      - ./name/nn2:/opt/hadoop/dfs/name
+      
     networks:
       - cluster-network
 
   myworker01:
+    build: .
     image: hadoop-ha:1.0
     container_name: myworker01
     hostname: myworker01 
@@ -38,10 +44,12 @@ services:
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
+      - ./journal/jn1:/opt/hadoop/dfs/journal
     networks:
       - cluster-network
 
   myworker02:
+    build: .
     image: hadoop-ha:1.0
     container_name: myworker02
     hostname: myworker02    
@@ -50,10 +58,12 @@ services:
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
+      - ./journal/jn2:/opt/hadoop/dfs/journal
     networks:
       - cluster-network
 
   myworker03:
+    build: .
     image: hadoop-ha:1.0
     container_name: myworker03
     hostname: myworker03   
@@ -62,6 +72,8 @@ services:
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
+      - ./journal/jn3:/opt/hadoop/dfs/journal
+      
     networks:
       - cluster-network
 
