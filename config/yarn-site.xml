@@ -59,7 +59,7 @@
     <name>yarn.resourcemanager.recovery.enabled</name>
     <value>true</value>
   </property>
-
+ <!-- RM state store class -->
   <property>
     <name>yarn.resourcemanager.store.class</name>
     <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore</value>

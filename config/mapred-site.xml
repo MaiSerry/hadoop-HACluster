@@ -23,27 +23,18 @@
     <value>yarn</value>
   </property>
 
-  <!-- JobHistory Server address -->
-  <property>
-    <name>mapreduce.jobhistory.address</name>
-    <value>mymaster01:10020</value>
-  </property>
 
-  <!-- JobHistory Web UI -->
-  <property>
-    <name>mapreduce.jobhistory.webapp.address</name>
-    <value>mymaster01:19888</value>
-  </property>
-
-    <!-- MapReduce environment for AM, map, reduce -->
+    <!-- MapReduce environment for ApplicationMaster -->
 <property>
   <name>yarn.app.mapreduce.am.env</name>
   <value>HADOOP_MAPRED_HOME=/opt/hadoop</value>
 </property>
+ <!-- MapReduce environment for map -->
 <property>
   <name>mapreduce.map.env</name>
   <value>HADOOP_MAPRED_HOME=/opt/hadoop</value>
 </property>
+  <!-- MapReduce environment for reduce -->
 <property>
   <name>mapreduce.reduce.env</name>
   <value>HADOOP_MAPRED_HOME=/opt/hadoop</value>

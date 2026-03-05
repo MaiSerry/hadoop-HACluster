@@ -6,9 +6,10 @@ services:
     container_name: mymaster01
     hostname: mymaster01
     ports:
-      - "8481:8480" #yarn
+    
       - "9878:9870" #nn UI
-     # - "8081:8088" #jn
+      - "8081:8088" # yarn
+     
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
@@ -23,9 +24,8 @@ services:
     container_name: mymaster02
     hostname: mymaster02
     ports:      
-      - "9879:9870" 
-      - "8482:8480"
-     # - "8082:8088"
+      - "9879:9870" #nn UI
+      - "8082:8088" # yarn
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
@@ -40,11 +40,13 @@ services:
     container_name: myworker01
     hostname: myworker01 
     ports: 
-     - "8083:8088" 
+     - "8481:8480" # jn UI
+
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
       - ./journal/jn1:/opt/hadoop/dfs/journal
+      - ./example:/example
     networks:
       - cluster-network
 
@@ -54,11 +56,12 @@ services:
     container_name: myworker02
     hostname: myworker02    
     ports:
-      - "8084:8088"     
+      - "8482:8480" # jn UI
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
       - ./journal/jn2:/opt/hadoop/dfs/journal
+      - ./example:/example
     networks:
       - cluster-network
 
@@ -68,12 +71,12 @@ services:
     container_name: myworker03
     hostname: myworker03   
     ports:
-       - "8085:8088"     
+       - "8483:8480" # jn UI     
     command: sleep infinity
     volumes:
       - ./config:/opt/hadoop/etc/hadoop
       - ./journal/jn3:/opt/hadoop/dfs/journal
-      
+      - ./example:/example
     networks:
       - cluster-network
 
