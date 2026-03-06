@@ -14,7 +14,7 @@ This repository presents a robust, easily deployable **Hadoop High Availability 
 
 The cluster is built upon a high-availability architecture designed for fault tolerance and continuous operation.
 
-<img width="1582" height="796" alt="Screenshot 2026-03-06 192625" src="https://github.com/user-attachments/assets/d2c98e03-7d66-4f9a-8048-6427ec358932" />
+<img width="1582" height="796" alt="Image" src="https://github.com/user-attachments/assets/1b737e4f-27be-4c3a-b717-5e62023a6c83" />
 
 
 ## Prerequisites
@@ -89,6 +89,7 @@ Follow these steps to set up and launch your Hadoop HA cluster:
 ## Contributing
 
 Contributions are welcome! If you have suggestions for improvements, bug fixes, or new features, please feel free to open a Pull Request
+
 
 
 
