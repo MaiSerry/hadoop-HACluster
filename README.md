@@ -22,7 +22,7 @@ Ensure your system meets the following requirements before proceeding with the c
 
 *   **Docker Engine**: Version 18.06.0 or higher. [Installation Guide](https://docs.docker.com/engine/install/)
 *   **Docker Compose**: Version 1.27.0 or higher. [Installation Guide](https://docs.docker.com/compose/install/)
-*   **Minimum System Resources**: At least 8GB RAM and 4 CPU cores are recommended for a smooth experience with the default cluster size. More resources may be required for larger datasets or heavier workloads.
+
 
 ## Setup and Installation
 
@@ -75,10 +75,18 @@ Follow these steps to set up and launch your Hadoop HA cluster:
     docker exec -it mymaster01 start-dfs.sh
     docker exec -it mymaster01 start-yarn.sh
     ```
+
+
+    
 ## Technologies
 - Hadoop 3.4.2
 - ZooKeeper 3.8.6
 - Docker + Docker Compose
 - Ubuntu 24.04
 - Java 17 (OpenJDK)
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements, bug fixes, or new features, please feel free to open a Pull Request
+
 
