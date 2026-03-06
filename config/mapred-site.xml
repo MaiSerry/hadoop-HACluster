@@ -23,6 +23,19 @@
     <value>yarn</value>
   </property>
 
+ <!-- History Server settings -->
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>master1:10020</value>
+    </property>
+
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>master1:19888</value>
+    </property>
+
+
+
 
     <!-- MapReduce environment for ApplicationMaster -->
 <property>
@@ -39,6 +52,12 @@
   <name>mapreduce.reduce.env</name>
   <value>HADOOP_MAPRED_HOME=/opt/hadoop</value>
 </property>
+
+
+	<property>
+        <name>mapreduce.application.classpath</name>
+        <value>$HADOOP_CLASSPATH:$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
+    </property>
 
 <!-- Full MapReduce classpath -->
 <property>

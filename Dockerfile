@@ -34,17 +34,16 @@ RUN mkdir -p /opt/data/zookeeper && \
     chown -R root:root /opt/data/zookeeper && \
     chmod -R 755 /opt/data/zookeeper
 
-
+ 
 # Create zoo.cfg automatically
 RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg && \
-    echo "tickTime=2000\n\
-dataDir=/opt/zookeeper/data\n\
-clientPort=2181\n\
-initLimit=5\n\
-syncLimit=2\n\
-server.1=mymaster01:2888:3888\n\
-server.2=mymaster02:2888:3888\n\
-server.3=myworker01:2888:3888" \
-> /opt/zookeeper/conf/zoo.cfg
+    echo "tickTime=2000" >> /opt/zookeeper/conf/zoo.cfg && \
+    echo "dataDir=/opt/data/zookeeper" >> /opt/zookeeper/conf/zoo.cfg && \
+    echo "clientPort=2181" >> /opt/zookeeper/conf/zoo.cfg && \
+    echo "initLimit=5" >> /opt/zookeeper/conf/zoo.cfg && \
+    echo "syncLimit=2" >> /opt/zookeeper/conf/zoo.cfg && \
+    echo "server.1=mymaster01:2888:3888" >> /opt/zookeeper/conf/zoo.cfg && \
+    echo "server.2=mymaster02:2888:3888" >> /opt/zookeeper/conf/zoo.cfg && \
+    echo "server.3=myworker01:2888:3888" >> /opt/zookeeper/conf/zoo.cfg
 
 WORKDIR /root
