@@ -68,7 +68,7 @@
   <!-- ZooKeeper quorum for RM state recovery -->
   <property>
     <name>yarn.resourcemanager.zk-address</name>
-    <value>myworker01:2181,myworker02:2181,myworker03:2181</value>
+    <value>mymaster01:2181,mymaster02:2181,myworker03:2181</value>
   </property>
 
   <!-- Scheduler (for example, capacity or fair scheduler) -->

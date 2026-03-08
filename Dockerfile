@@ -24,10 +24,11 @@ RUN curl -O https://archive.apache.org/dist/hadoop/common/hadoop-3.3.6/hadoop-3.
 
 # Download ZooKeeper
 RUN cd /opt && \
-    wget https://downloads.apache.org/zookeeper/zookeeper-3.8.6/apache-zookeeper-3.8.6-bin.tar.gz && \
-    tar -xzvf apache-zookeeper-3.8.6-bin.tar.gz && \
-    mv apache-zookeeper-3.8.6-bin /opt/zookeeper && \
-    rm apache-zookeeper-3.8.6-bin.tar.gz
+    wget https://archive.apache.org/dist/zookeeper/zookeeper-3.8.4/apache-zookeeper-3.8.4-bin.tar.gz && \
+    tar -xzf apache-zookeeper-3.8.4-bin.tar.gz && \
+    mv apache-zookeeper-3.8.4-bin /opt/zookeeper && \
+    rm apache-zookeeper-3.8.4-bin.tar.gz
+    
 
 # Create data directory
 RUN mkdir -p /opt/data/zookeeper && \
@@ -44,6 +45,6 @@ RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg && \
     echo "syncLimit=2" >> /opt/zookeeper/conf/zoo.cfg && \
     echo "server.1=mymaster01:2888:3888" >> /opt/zookeeper/conf/zoo.cfg && \
     echo "server.2=mymaster02:2888:3888" >> /opt/zookeeper/conf/zoo.cfg && \
-    echo "server.3=myworker01:2888:3888" >> /opt/zookeeper/conf/zoo.cfg
+    echo "server.3=myworker03:2888:3888" >> /opt/zookeeper/conf/zoo.cfg
 
 WORKDIR /root

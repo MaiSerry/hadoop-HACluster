@@ -55,7 +55,7 @@
   <!-- Shared edit logs using JournalNodes -->
   <property>
     <name>dfs.namenode.shared.edits.dir</name>
-    <value>qjournal://myworker01:8485;myworker02:8485;myworker03:8485/mycluster</value>
+    <value>qjournal://mymaster01:8485;mymaster02:8485;myworker03:8485/mycluster</value>
   </property>
 
   <!-- Automatic failover enabled -->
